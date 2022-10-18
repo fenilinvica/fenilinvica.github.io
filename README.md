@@ -1,23 +1,25 @@
 Skip to the content.
-fenilinvica.github.io
+
+  fenilinvica.github.io
 
 
 
 ------------ #Fenil 
 
-//Genrate Token
+ //Genrate Token
 
-const genrateToken = (username) => {
+    const genrateToken = (username) => {
     const token = jwt.sign({ username: username },
         process.env.jwt_sec_key, {
         expiresIn: '3y'
     })
     return token
-}
+    }
 
 
 //Multer: 
-const imageUpload = multer({
+
+     const imageUpload = multer({
     storage: multer.diskStorage({
         // Destination to store image     
         destination: 'images',
@@ -44,7 +46,7 @@ const imageUpload = multer({
 
 //Check Auth Token
 
-const cheackUserAuth = async (req, res, next) => {
+  const cheackUserAuth = async (req, res, next) => {
     const token = req.headers
     let token_verify
     try {
@@ -75,7 +77,7 @@ const cheackUserAuth = async (req, res, next) => {
     else {
         res.status(TOKEN_UNATHORIZE_CODE).send({ status: false, message: "Token Not Add" })
     }
-}
+  }
 
 
 
