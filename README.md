@@ -4,6 +4,81 @@ fenilinvica.github.io
 
 
 ------------ #Fenil 
+
+//Genrate Token
+
+const genrateToken = (username) => {
+    const token = jwt.sign({ username: username },
+        process.env.jwt_sec_key, {
+        expiresIn: '3y'
+    })
+    return token
+}
+
+
+//Multer: 
+const imageUpload = multer({
+    storage: multer.diskStorage({
+        // Destination to store image     
+        destination: 'images',
+        filename: (req, file, cb) => {
+            cb(null, file.fieldname + '_' + Date.now()
+                + ".png")
+            console.log("Field Name: " + file.fieldname + '_' + Date.now() + ".png")
+
+        }
+    }),
+
+    limits: {
+        fileSize: 5000000 // 5000000 Bytes = 5 MB
+    },
+    fileFilter(req, file, cb) {
+        if (!file.originalname.match(/\.(png|jpg|jpeg)$/)) {
+            // upload only png and jpg format
+            return cb(new Error('Please upload valide Image'))
+        }
+        cb(undefined, true)
+    }
+})
+
+
+//Check Auth Token
+
+const cheackUserAuth = async (req, res, next) => {
+    const token = req.headers
+    let token_verify
+    try {
+        token_verify = JSON.stringify(token).split(" ")[1].split(`"`)[0].trim();
+    } catch (error) {
+        console.log("Error: " + error);
+    }
+
+    console.log("Verify Token: " + token_verify);
+
+    if (token_verify) {
+        try {
+            // verify token 
+            const muserdata = await userdata.findOne({ token: token_verify });
+
+            if (muserdata == null) {
+                res.status(TOKEN_UNATHORIZE_CODE).send({ status: false, message: "Token not found" });
+            } else {
+                req.query.tokendata = muserdata
+                next();
+            }
+
+        } catch (err) {
+            console.log(err);
+            res.status(TOKEN_UNATHORIZE_CODE).send({ message: "Token UnAthorized User" })
+        }
+    }
+    else {
+        res.status(TOKEN_UNATHORIZE_CODE).send({ status: false, message: "Token Not Add" })
+    }
+}
+
+
+
 Validation Mongoos
   "type": "String",
         required: 'Email address is required',
