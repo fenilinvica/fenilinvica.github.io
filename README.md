@@ -46,7 +46,7 @@ Skip to the content.
 
 //Check Auth Token
 
-  const cheackUserAuth = async (req, res, next) => {
+    const cheackUserAuth = async (req, res, next) => {
     const token = req.headers
     let token_verify
     try {
@@ -77,12 +77,12 @@ Skip to the content.
     else {
         res.status(TOKEN_UNATHORIZE_CODE).send({ status: false, message: "Token Not Add" })
     }
-  }
+    }
 
 
+//Validation Mongoos
 
-Validation Mongoos
-  "type": "String",
+    "type": "String",
         required: 'Email address is required',
         "unique": true,
         lowercase: true,
@@ -90,18 +90,19 @@ Validation Mongoos
         validate: [validateEmail, 'Please fill a valid email address'],
         match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
 
-var validateEmail = function (email) {
+   var validateEmail = function (email) {
     var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     return re.test(email)
-};
+   };
 
 
 // Connect MongoDB
-mongoose.connect(DATA_BASE_PATH).then(() => {
+
+  mongoose.connect(DATA_BASE_PATH).then(() => {
     console.log(`MongoDB connection Don`);
-}).catch((error) => {
+  }).catch((error) => {
     console.log(`Error`);
-})
+  })
 
 
 
