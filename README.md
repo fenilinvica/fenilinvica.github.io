@@ -1,8 +1,7 @@
 BaseAct
 
- abstract class BaseAct<T : ViewBinding> : AppCompatActivity() {
+    abstract class BaseAct<T : ViewBinding> : AppCompatActivity() {
     lateinit var bind: T
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bind = getActivityBinding(layoutInflater)
