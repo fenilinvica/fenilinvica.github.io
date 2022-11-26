@@ -1,3 +1,22 @@
+BaseAct
+
+ abstract class BaseAct<T : ViewBinding> : AppCompatActivity() {
+    lateinit var bind: T
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        bind = getActivityBinding(layoutInflater)
+        setContentView(bind.root)
+        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        exc { initUI() }
+    }
+
+
+    abstract fun getActivityBinding(inflater: LayoutInflater): T
+
+    abstract fun initUI()
+
 Skip to the content.
 
   fenilinvica.github.io
