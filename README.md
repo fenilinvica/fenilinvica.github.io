@@ -1,3 +1,79 @@
+// Extenstion Funcation 
+
+        fun <T> AppCompatActivity.toAc(java: Class<T>) = startActivity(Intent(this, java))
+        
+        fun htmlTagVertical(txt: String, value: Any): Spanned = "<font color=#064974><small>$txt</small></font> <br> <font>$value</font>".html()
+
+        fun htmlTagHorizontal(txt: String, value: Any): Spanned = "<font color=#969696><small>$txt</small></font>${value}".html()
+
+          fun View.gon() {
+              this.visibility = GONE
+          }
+
+          fun View.invisible() {
+              this.visibility = INVISIBLE
+          }
+
+          fun <T> T.tos(ctx: Context) = Toast.makeText(ctx, "$this", Toast.LENGTH_SHORT).show()
+          fun <T> T.tosL(ctx: Context) = Toast.makeText(ctx, "$this", Toast.LENGTH_LONG).show()
+
+     fun dayDiff(startDate: Long, endDate: Long = System.currentTimeMillis()): Int {
+
+         val dateFormat = "dd/MM/yyyy"
+         val df = SimpleDateFormat(dateFormat)
+
+         val startDay = df.parse(DateFormat.format(dateFormat, Date(startDate)).toString())
+         val endDay = df.parse(DateFormat.format(dateFormat, Date(endDate)).toString())
+
+         return (abs(startDay.time - endDay.time) / (24 * 60 * 60 * 1000)).toInt()
+     }
+
+     fun longToDate(millis: Long) = DateFormat.format("dd/MM/yyyy", Date(millis)).toString()
+
+     fun dateToDate(date: Date) = DateFormat.format("dd/MM/yyyy", date).toString()
+
+     fun longToDayOfMonth(millis: Long) = DateFormat.format("dd", Date(millis)).toString().toInt()
+
+     fun String.html() = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) Html.fromHtml(this, Html.FROM_HTML_MODE_LEGACY) else HtmlCompat.fromHtml(this, HtmlCompat.FROM_HTML_MODE_LEGACY)
+
+     fun disableBtn(v: View) {
+         v.isEnabled = false
+         Handler(Looper.getMainLooper()).postDelayed({ v.isEnabled = true }, 2000)
+     }
+
+     fun View.removeFromParent() {
+         if (parent != null) (parent as ViewGroup).removeView(this)
+     }
+
+     fun onBackground(block: () -> Unit) {
+         Executors.newSingleThreadExecutor().execute {
+             block()
+         }
+     }
+     
+     fun delayInMillis(millis: Long, block: () -> Unit) {
+    Handler(Looper.getMainLooper()).postDelayed({
+        block()
+    }, millis)
+}
+
+     inline fun exc(block: () -> Unit) {
+         try {
+             block()
+         } catch (e: Exception) {
+             e.print()
+         }
+     }
+
+     fun openUri(ctx: Context, uri: String) = ctx.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(uri)))
+
+     fun isServiceRunning(ctx: Context, serviceClass: Class<*>): Boolean {
+         for (service in (ctx.getSystemService(AppCompatActivity.ACTIVITY_SERVICE) as ActivityManager).getRunningServices(Int.MAX_VALUE)) {
+             if (serviceClass.name == service.service.className) return true
+         }
+         return false
+     }
+
 // Download From notification 
 
      private fun enqueueDownload(context: Context) {
