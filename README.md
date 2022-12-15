@@ -1,3 +1,9 @@
+// ViewBinding
+                buildFeatures {
+                viewBinding true
+            }
+    
+
 // Extenstion Funcation 
 
         fun <T> AppCompatActivity.toAc(java: Class<T>) = startActivity(Intent(this, java))
