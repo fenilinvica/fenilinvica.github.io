@@ -67,7 +67,7 @@
           <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
 
 
-      <style name="Theme.WindowFullscreen" parent="Theme.Silk">
+      <style name="Theme.WindowFullscreen" parent="Theme.Name">
           <item name="android:windowNoTitle">true</item>
           <item name="android:windowFullscreen">true</item>
       </style>
@@ -75,36 +75,84 @@
 
 // Important Lib
 
-        implementation 'com.google.firebase:firebase-crashlytics-ktx:18.2.13'
-        implementation 'com.google.firebase:firebase-analytics-ktx:21.1.1'
+        
+            implementation 'com.yandex.android:mobmetricalib:5.0.1'
 
-        //auth & firestore
-        implementation 'com.google.firebase:firebase-auth-ktx:21.0.8'
-        implementation 'com.google.firebase:firebase-firestore-ktx:24.3.1'
+            implementation 'com.android.installreferrer:installreferrer:2.2'
 
-        //browser
-        implementation 'androidx.browser:browser:1.4.0'
+            implementation 'com.facebook.android:facebook-android-sdk:latest.release'
 
-        //swiperefreshlayout
-        implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+            //in-App Review
+            implementation 'com.google.android.play:review:2.0.0'
+            implementation 'com.google.android.play:review-ktx:2.0.0'
 
-        //to get member of class
-        implementation "org.jetbrains.kotlin:kotlin-reflect:1.7.10"
+            //OneSignal
+            implementation 'com.onesignal:OneSignal:[4.0.0, 4.99.99]'
 
-        //retrofit2 & interceptor & gson & Glide & sdp
-        implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-        implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-        implementation 'com.squareup.okhttp3:logging-interceptor:4.9.1'
-        implementation 'com.google.code.gson:gson:2.9.1'
-        implementation 'com.github.bumptech.glide:glide:4.13.2'
-        annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
-        implementation 'com.intuit.sdp:sdp-android:1.1.0'
+            //firebase-auth
+            implementation 'com.google.firebase:firebase-auth-ktx:21.0.7'
+            implementation 'com.google.android.gms:play-services-analytics-impl:18.0.2'
 
-        implementation 'androidx.core:core-ktx:1.7.0'
-        implementation 'androidx.appcompat:appcompat:1.5.1'
-        implementation 'com.google.android.material:material:1.6.1'
-        implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+            //billing
+            def billing_version = "5.0.0"
+            implementation "com.android.billingclient:billing:$billing_version"
+            implementation "com.android.billingclient:billing-ktx:$billing_version"
 
+            //lib
+            implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+            implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.0"
+            annotationProcessor "androidx.lifecycle:lifecycle-compiler:2.5.0"
+            //ads
+            implementation 'com.google.android.gms:play-services-ads:20.6.0'
+
+            implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
+            implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1'
+
+            implementation 'com.airbnb.android:lottie:5.2.0'
+
+            //blure effect
+            implementation 'jp.wasabeef:glide-transformations:4.3.0'
+            // If you want to use the GPU Filters
+            implementation 'jp.co.cyberagent.android:gpuimage:2.1.0'
+
+            //ucrop
+            implementation 'com.github.yalantis:ucrop:2.2.6'
+
+            //sdp
+            implementation 'com.intuit.sdp:sdp-android:1.1.0'
+
+            //retrofit2
+            implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+            implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+            //interceptor
+            implementation 'com.squareup.okhttp3:logging-interceptor:4.9.1'
+
+            //gson
+            implementation 'com.google.code.gson:gson:2.8.9'
+
+            //Glide
+            implementation 'com.github.bumptech.glide:glide:4.13.0'
+            annotationProcessor 'com.github.bumptech.glide:compiler:4.13.0'
+
+            //firebase-crashlytics & analytics
+            implementation 'com.google.firebase:firebase-crashlytics:18.2.6'
+            implementation 'com.google.firebase:firebase-analytics:20.0.2'
+            //firestore
+            implementation 'com.google.firebase:firebase-firestore-ktx:24.2.1'
+
+            //multidex
+            implementation 'androidx.multidex:multidex:2.0.1'
+
+            //kotlin
+            implementation 'androidx.core:core-ktx:1.8.0'
+
+            implementation "androidx.activity:activity-ktx:1.5.0"
+
+            implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+            implementation 'androidx.appcompat:appcompat:1.4.2'
+            implementation 'com.google.android.material:material:1.6.1'
+            implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
 // ViewBinding
                
