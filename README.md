@@ -1,7 +1,8 @@
 // ViewBinding
-                buildFeatures {
-                viewBinding true
-            }
+               
+         buildFeatures {
+            viewBinding true
+         }
     
 
 // Extenstion Funcation 
