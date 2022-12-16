@@ -1,3 +1,111 @@
+
+// Android Menifest
+
+        android:largeHeap="true"
+              android:requestLegacyExternalStorage="true"
+               android:usesCleartextTraffic="true"
+
+               <activity
+                  android:name="<Act Name>"
+                  android:configChanges="uiMode"
+                              android:launchMode="singleInstance"
+                  android:exported="false"
+                  android:screenOrientation="portrait">
+
+              </activity>
+
+
+              <provider
+                  android:name="androidx.core.content.FileProvider"
+                  android:authorities="${applicationId}.provider"
+                  android:exported="false"
+                  android:grantUriPermissions="true">
+                  <meta-data
+                      android:name="android.support.FILE_PROVIDER_PATHS"
+                      android:resource="@xml/provider_paths" />
+              </provider>
+
+              --- XML Provider ---
+              <paths>
+          <external-path
+              name="external"
+              path="." />
+          <external-files-path
+              name="external_files"
+              path="." />
+          <cache-path
+              name="cache"
+              path="." />
+          <external-cache-path
+              name="external_cache"
+              path="." />
+          <files-path
+              name="files"
+              path="." />
+      </paths>
+
+        
+// Important Theme
+ 
+    <item name="colorPrimary">@color/purple_500</item>
+          <item name="colorPrimaryVariant">@color/purple_700</item>
+          <item name="colorOnPrimary">@color/white</item>
+          <!-- Secondary brand color. -->
+          <item name="colorSecondary">@color/teal_200</item>
+          <item name="colorSecondaryVariant">@color/teal_700</item>
+          <item name="colorOnSecondary">@color/black</item>
+          <!-- Status bar color. -->
+          <item name="android:statusBarColor">@color/status_bar</item>
+          <item name="android:windowLightStatusBar">false</item>
+
+          <!-- Customize your theme here. -->
+          <item name="materialCalendarFullscreenTheme">@style/ThemeOverlay.MaterialComponents.MaterialCalendar.Fullscreen</item>
+
+          <item name="android:windowSplashScreenAnimatedIcon" tools:targetApi="s">@android:color/transparent</item>
+          <item name="android:windowSplashScreenIconBackgroundColor" tools:targetApi="s">@android:color/transparent</item>
+          <!--        <item name="android:windowSplashScreenAnimationDuration" tools:targetApi="s">100</item>-->
+          <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+
+
+      <style name="Theme.WindowFullscreen" parent="Theme.Silk">
+          <item name="android:windowNoTitle">true</item>
+          <item name="android:windowFullscreen">true</item>
+      </style>
+
+
+// Important Lib
+
+        implementation 'com.google.firebase:firebase-crashlytics-ktx:18.2.13'
+        implementation 'com.google.firebase:firebase-analytics-ktx:21.1.1'
+
+        //auth & firestore
+        implementation 'com.google.firebase:firebase-auth-ktx:21.0.8'
+        implementation 'com.google.firebase:firebase-firestore-ktx:24.3.1'
+
+        //browser
+        implementation 'androidx.browser:browser:1.4.0'
+
+        //swiperefreshlayout
+        implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+
+        //to get member of class
+        implementation "org.jetbrains.kotlin:kotlin-reflect:1.7.10"
+
+        //retrofit2 & interceptor & gson & Glide & sdp
+        implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+        implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+        implementation 'com.squareup.okhttp3:logging-interceptor:4.9.1'
+        implementation 'com.google.code.gson:gson:2.9.1'
+        implementation 'com.github.bumptech.glide:glide:4.13.2'
+        annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
+        implementation 'com.intuit.sdp:sdp-android:1.1.0'
+
+        implementation 'androidx.core:core-ktx:1.7.0'
+        implementation 'androidx.appcompat:appcompat:1.5.1'
+        implementation 'com.google.android.material:material:1.6.1'
+        implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+
 // ViewBinding
                
          buildFeatures {
