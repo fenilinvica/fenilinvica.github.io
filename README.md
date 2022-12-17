@@ -449,6 +449,11 @@ Skip to the content.
 
 //emulator detection
     
+    public Boolean isEmulator() {
+        @SuppressLint("HardwareIds") String androidId = Settings.Secure.getString(getContentResolver(), "android_id");
+        return Build.PRODUCT.contains("sdk") || Build.HARDWARE.contains("goldfish") || Build.HARDWARE.contains("ranchu") || androidId == null;
+    }
+    
     //by facebook
     @JvmStatic
     fun isEmulator(): Boolean {
