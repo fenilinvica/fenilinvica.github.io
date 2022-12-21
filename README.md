@@ -258,7 +258,7 @@
         "downloading".tosL()
     }
 
-BaseAct
+//BaseAct
 
     abstract class BaseAct<T : ViewBinding> : AppCompatActivity() {
     lateinit var bind: T
@@ -275,14 +275,50 @@ BaseAct
     abstract fun getActivityBinding(inflater: LayoutInflater): T
 
     abstract fun initUI()
+    
+    fun <T> T.tos() = Toast.makeText(this@BaseAct, "$this", Toast.LENGTH_SHORT).show()
+    fun <T> T.tosL() = Toast.makeText(this@BaseAct, "$this", Toast.LENGTH_LONG).show()
 
-Skip to the content.
+    fun openUri(uri: String) = startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(uri)))
 
-  fenilinvica.github.io
+    fun rateUs() {
+        try {
+            val marketUri = Uri.parse("market://details?id=$packageName")
+            val marketIntent = Intent(Intent.ACTION_VIEW, marketUri)
+            startActivity(marketIntent)
+        } catch (e: Exception) {
+            e.print()
+            val marketUri = Uri.parse("https://play.google.com/store/apps/details?id=$packageName")
+            val marketIntent = Intent(Intent.ACTION_VIEW, marketUri)
+            startActivity(marketIntent)
+        }
+    }
 
+    fun shareUs() {
+        val i = Intent(Intent.ACTION_SEND)
+                .putExtra(
+                        Intent.EXTRA_TEXT,
+                        "I'm using ${getString(R.string.app_name)}! Get the app for free at http://play.google.com/store/apps/details?id=${packageName}"
+                )
+        i.type = "text/plain"
+        startActivity(Intent.createChooser(i, "Share"))
+    }
 
-
------------- #Fenil 
+    fun canWrite(): Boolean {
+        if (ContextCompat.checkSelfPermission(
+                        this,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE
+                ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                    111
+            )
+            return false
+        }
+        return true
+    }
 
  //Genrate Token
 
