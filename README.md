@@ -1,3 +1,23 @@
+// Firebase Rules
+
+         rules_version = '2';
+        service cloud.firestore {
+
+        match /databases/{database}/documents {
+
+            // match /abc/{document=**} {
+            //   allow read: if true;   
+            //   allow write: if false;
+            // }
+
+           match /base/{document=**} {
+              allow read: if request.auth!=null;   
+              allow write: if false;
+            }
+          }
+
+        }
+
 
 // Android Menifest
 
