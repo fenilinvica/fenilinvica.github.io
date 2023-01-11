@@ -1,3 +1,14 @@
+// onActivity Result
+
+        var settingpermission: ActivityResultLauncher<Intent> =
+              registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+
+                  if (result.resultCode == RESULT_OK) {
+
+                  }
+              }
+
+
 // updated onBackpress
 
       onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
